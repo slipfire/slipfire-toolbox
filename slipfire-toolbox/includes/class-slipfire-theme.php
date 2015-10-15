@@ -149,7 +149,7 @@ class SlipFire_Theme
     }
 
     // Page template
-    if(get_page_template())
+    if(is_page_template())
     {
       $path = pathinfo(get_page_template());
       $file = $path['filename'] . '.' . $path['extension'];
