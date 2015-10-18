@@ -18,7 +18,9 @@ class SlipFire_Theme
     add_action('send_headers', array('slipfire_theme', 'send_headers'));
     add_action('get_header', array('slipfire_theme', 'get_header'));
     add_action('wp_enqueue_scripts', array('slipfire_theme', 'scripts_styles_early'), 0);
+    add_action('wp_enqueue_scripts', array('slipfire_theme', 'scripts_styles_last'), 99999);
 
+    add_action('wp_head', array('slipfire_theme', 'browse_happy'), 99999);
     add_filter('body_class', array('slipfire_theme', 'body_class'));
 
     register_theme_directory(get_template_directory() . '/page-templates-auto' );
@@ -49,6 +51,34 @@ class SlipFire_Theme
     wp_enqueue_style('normalize');
   }
 
+  /**
+   * Enqueue Style and Scripts after themes and plugins
+   */
+  public static function scripts_styles_last()
+  {
+    wp_register_style('slipfire-toolbox', slipfire_toolbox::base_dir_url() . 'parts/css/slipfire-toolbox.min.css');
+    wp_enqueue_style('slipfire-toolbox');
+  }
+
+  public static function browse_happy()
+  {
+    ?>
+
+    <!--[if lt IE 8]>
+      <style>
+        #slipfire-browsehappy {
+          text-align: center;
+          margin: 10px !important;
+          padding: 10px !important;
+          font-family: serif;
+          font-weight: bold;
+        }
+      </style>
+
+      <p id="slipfire-browsehappy">You are using an outdated web browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> </p>
+    <![endif]-->
+    <?php
+  }
 
   /**
    * Enhanced body classes
