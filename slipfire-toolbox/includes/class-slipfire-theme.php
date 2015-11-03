@@ -32,9 +32,9 @@ class SlipFire_Theme
    */
   public static function send_headers()
   {
-    send_nosniff_header();
     header('X-Frame-Options: SAMEORIGIN'); // http://engineeredweb.com/blog/2013/secure-site-clickjacking-x-frame-options/
     header("X-XSS-Protection: 1; mode=block"); // https://kb.sucuri.net/warnings/hardening/headers-x-xss-protection
+    send_nosniff_header();
   }
 
   public static function get_header()
