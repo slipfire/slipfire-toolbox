@@ -2,6 +2,12 @@
   clear: both;
 }
 
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .clear-left {
   clear: left;
 }
@@ -16,8 +22,21 @@
   text-align: center !important;
 }
 
-.weight-normal {
+.bold {
+  font-weight: bold;
+}
+
+.normal {
   font-weight: normal;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.caps {
+  text-transform: uppercase;
+  letter-spacing: .2em;
 }
 
 .screen-reader-text {
@@ -32,12 +51,24 @@
   float: right !important;
 }
 
-.text-align-left {
+.text-left {
   text-align: left;
 }
 
-.text-align-right {
+.text-right {
   text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify
+}
+
+.fit {
+  max-width: 100%;
 }
 
 .full-width {
@@ -49,6 +80,10 @@
 
 .half-width {
   width: 50%;
+}
+
+.full-height {
+  height: 100%;
 }
 
 .hide {
@@ -120,4 +155,102 @@ a.no-link:focus {
 .link-not-active {
    pointer-events: none;
    cursor: default;
+}
+
+.inline {
+  display: inline;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.table {
+  display: table;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+.flex {
+  display: flex;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.align-baseline {
+  vertical-align: baseline;
+}
+
+.align-top {
+  vertical-align: top;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
+.align-bottom {
+  vertical-align: bottom;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.static {
+  position: static;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.break-word {
+  word-wrap: break-word;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* get rid of the bullets and padding from the ul element */
+.list-bare {
+  padding: 0;
+  list-style: none;
 }

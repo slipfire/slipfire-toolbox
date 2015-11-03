@@ -259,6 +259,4 @@ class SlipFire
 
     return $post_types;
   }
-
-
 }
