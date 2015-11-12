@@ -3,7 +3,7 @@
 Plugin Name: SlipFire Toolbox
 Plugin URI: http://slipfire.com
 Description: SlipFire functions and CSS. Install in mu-plugins
-Version: 4.9.3
+Version: 4.9.5
 Author: SlipFire
 Author URI: http://slipfire.com/
 Plugin Type: Piklist
@@ -18,6 +18,7 @@ if (!defined('ABSPATH'))
 
 include_once('slipfire-toolbox/library/load-libraries.php');
 include_once('slipfire-toolbox/includes/class-slipfire.php');
+include_once('slipfire-toolbox/includes/class-slipfire-security.php');
 include_once('slipfire-toolbox/includes/class-slipfire-theme.php');
 
 if (is_admin())
@@ -29,6 +30,6 @@ class SlipFire_Toolbox
 {
   public static function base_dir_url()
 	{
-		return plugin_dir_url(__FILE__) . 'slipfire-toolbox/';
+		return plugins_url('slipfire-toolbox/', __FILE__);
 	}
 }
