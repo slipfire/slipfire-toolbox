@@ -9,6 +9,12 @@ $slipfire = new SlipFire();
 
 class SlipFire
 {
+  public function __construct()
+  {
+    add_action('init', array('slipfire', 'create_cron_schedules'));
+  }
+
+
   /**
    * Output as preformatted text
    */
@@ -188,32 +194,6 @@ class SlipFire
      <?php 
   }
 
-  /**
-   * Same as file_get_contents
-   * uses CURL
-   *
-   * Use when allow_url_include is OFF
-   */
-  function curl_get_contents($url)
-  {
-    if(function_exists('curl_version'))
-    {
-      $ch = curl_init();
-
-      curl_setopt($ch, CURLOPT_HEADER, 0);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($ch, CURLOPT_URL, $url);
-
-      $data = curl_exec($ch);
-      curl_close($ch);
-
-      return $data;
-    }
-    else
-    {
-      slipfire::pre('Curl not installed');
-    }
-  }
 
   /**
    * Returns a list of taxonomies
@@ -259,4 +239,22 @@ class SlipFire
 
     return $post_types;
   }
+
+  /**
+   * Setup cron schedule
+   * 
+   * To use: add_action('slipfire_hourly_cron_job', 'function_to_run_hourly')
+   */
+  public static function create_cron_schedules()
+  {
+    // Setup hourly cron job
+    if(!wp_next_scheduled('slipfire_hourly_cron_job'))
+    {
+      wp_schedule_event (time(), 'hourly', 'slipfire_hourly_cron_job');
+    }
+  }
+
+
+
 }
+
