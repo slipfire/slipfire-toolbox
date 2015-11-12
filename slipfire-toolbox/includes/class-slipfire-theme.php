@@ -15,7 +15,7 @@ class SlipFire_Theme
   {
     self::$hash = md5(date('Y m d'));
 
-    add_action('send_headers', array('slipfire_theme', 'send_headers'));
+    add_action('wp_headers', array('slipfire_theme', 'send_headers'));
     add_action('get_header', array('slipfire_theme', 'get_header'));
     add_action('wp_enqueue_scripts', array('slipfire_theme', 'scripts_styles_early'), 0);
     add_action('wp_enqueue_scripts', array('slipfire_theme', 'scripts_styles_last'), 99999);
@@ -32,9 +32,12 @@ class SlipFire_Theme
    */
   public static function send_headers()
   {
-    header('X-Frame-Options: SAMEORIGIN'); // http://engineeredweb.com/blog/2013/secure-site-clickjacking-x-frame-options/
-    header("X-XSS-Protection: 1; mode=block"); // https://kb.sucuri.net/warnings/hardening/headers-x-xss-protection
     send_nosniff_header();
+
+    $headers['X-Frame-Options'] = 'SAMEORIGIN'; // http://engineeredweb.com/blog/2013/secure-site-clickjacking-x-frame-options/
+    $headers['X-XSS-Protection'] = '1; mode=block';  // https://kb.sucuri.net/warnings/hardening/headers-x-xss-protection
+    
+    return $headers;
   }
 
   public static function get_header()
@@ -82,6 +85,8 @@ class SlipFire_Theme
 
   /**
    * Enhanced body classes
+   *
+   * Inspired by https://github.com/justintadlock/hybrid-core
    */
   public static function body_class($classes)
   {
