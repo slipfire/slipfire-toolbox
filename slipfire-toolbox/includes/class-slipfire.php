@@ -17,6 +17,7 @@ class SlipFire
 
   /**
    * Output as preformatted text
+   * @credit https://wordpress.org/plugins/piklist/
    */
   public static function pre($output, $hide = false)
   {
@@ -44,6 +45,8 @@ class SlipFire
   /**
    * performance
    * Removes what php limits are possible to remove to allow a process to run as long as needed.
+   *
+   * @credit https://wordpress.org/plugins/piklist/
    */
   public static function performance()
   {
@@ -152,23 +155,40 @@ class SlipFire
    */
   public static function get_current_url()
   {
-    return ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    return (is_ssl() ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
   }
+
 
   /**
    * Enable Maintenance Mode
+   * @param  boolean $network Set entire network to maintenance mode.
    */
-  public static function enable_maintenance_mode()
+  public static function enable_maintenance_mode($network = false)
   {
-    update_option('sfire_maintenance_mode', true);
+    if($network)
+    {
+      update_site_option('sfire_maintenance_mode', true);
+    }
+    else
+    {
+      update_option('sfire_maintenance_mode', true);
+    }
   }
 
   /**
    * Check Maintenance Mode
+   * @param  boolean $network check if entire network is in maintenance mode.
    */
-  public static function is_maintenance_mode()
+  public static function is_maintenance_mode($network = false)
   {
-    $mode = get_option('sfire_maintenance_mode');
+    if($network)
+    {
+      $mode = get_site_option('sfire_maintenance_mode');
+    }
+    else
+    {
+      $mode = get_option('sfire_maintenance_mode');
+    }
 
     if($mode)
     {
@@ -183,7 +203,10 @@ class SlipFire
    */
   public static function disable_maintenance_mode()
   {
-    update_option('sfire_maintenance_mode', false); ?>
+    update_option('sfire_maintenance_mode', false);
+    update_site_option('sfire_maintenance_mode', false);
+
+    ?>
 
     <div class="updated">
       <p>

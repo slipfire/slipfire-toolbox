@@ -9,12 +9,8 @@ $slipfire_theme = new SlipFire_Theme();
 
 class SlipFire_Theme
 {
-  public static $hash;
-
   public function __construct()
   {
-    self::$hash = md5(date('Y m d'));
-
     add_action('wp_headers', array('slipfire_theme', 'send_headers'));
     add_action('get_header', array('slipfire_theme', 'get_header'));
     add_action('wp_enqueue_scripts', array('slipfire_theme', 'scripts_styles_early'), 0);
@@ -22,9 +18,6 @@ class SlipFire_Theme
 
     add_action('wp_head', array('slipfire_theme', 'browse_happy'), 99999);
     add_filter('body_class', array('slipfire_theme', 'body_class'));
-
-    register_theme_directory(get_template_directory() . '/page-templates-auto' );
-
   }
 
   /**
@@ -236,9 +229,10 @@ class SlipFire_Theme
       $classes[] = 'phone';
     }
 
-
-
-    
+    if(slipfire::is_tablet())
+    {
+      $classes[] = 'tablet';
+    }
 
     // Browsers
     if ($is_lynx)
@@ -288,19 +282,13 @@ class SlipFire_Theme
 
   /**
    * Check if site was placed in maintenance mode
-   *
-   * param (optional) ?dmm=slipfire_theme::$hash
    */
   public static function check_maintenance_mode()
   {    
     $maintenance_mode = get_option('sfire_maintenance_mode');
+    $maintenance_mode_network = get_site_option('sfire_maintenance_mode');
 
-    if(isset($_GET['dmm']) && $_GET['dmm'] == slipfire_theme::$hash)
-    {
-      $maintenance_mode = false;
-    }
-
-    if($maintenance_mode == false)
+    if($maintenance_mode == false && $maintenance_mode_network == false)
     {
       return;
     }
