@@ -147,6 +147,10 @@
   cursor: auto;
 }
 
+.border-none {
+  border: 0;
+}
+
 a.no-link:hover,
 a.no-link:focus {
   text-decoration: none;
@@ -249,7 +253,7 @@ a.no-link:focus {
   white-space: nowrap;
 }
 
-/* get rid of the bullets and padding from the ul element */
+/* get rid of the bullets and padding from a ul element */
 .list-bare {
   padding: 0;
   list-style: none;
