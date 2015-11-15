@@ -1,0 +1,56 @@
+/**
+ * Inspired by
+ * http://www.smashingmagazine.com/2011/11/how-to-set-up-a-print-style-sheet/
+ * http://alistapart.com/article/goingtoprint
+ */
+
+
+/**
+ * Force background to white
+ */
+body {
+	background: white;
+}
+
+/**
+ * Display hyperlink next to link text
+ * Only within p tags
+ */
+p a:link:after {
+	content: " (" attr(href) ") "; 
+	font-size: 90%; 
+}
+
+/**
+ * Break long urls
+ */
+p a {
+	word-wrap: break-word;
+}
+
+/**
+ * Highlight links
+ */
+a:link, 
+a:visited { 
+	color: #520; 
+	background: transparent; 
+	font-weight: bold; 
+	text-decoration: underline; 
+}
+
+/**
+ * Make sure images don't overscale
+ */
+img {
+	height: auto;
+	width: auto;
+	max-width: 100%;
+}
+
+/**
+ * Do not pint
+ */
+.no-print {
+  display: none !important;
+}

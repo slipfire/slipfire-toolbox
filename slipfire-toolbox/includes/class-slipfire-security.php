@@ -9,6 +9,9 @@ $slipfire_security = new SlipFire_Security();
 
 class SlipFire_Security
 {
+	/**
+	 * Initialize the class
+	 */
   public function __construct()
   {
   	add_action('slipfire_hourly_cron_job', array('slipfire_security', 'test_debug_log'));

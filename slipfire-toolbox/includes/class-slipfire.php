@@ -9,6 +9,9 @@ $slipfire = new SlipFire();
 
 class SlipFire
 {
+  /**
+   * Initialize the class
+   */
   public function __construct()
   {
     add_action('init', array('slipfire', 'create_cron_schedules'));
@@ -44,7 +47,7 @@ class SlipFire
 
   /**
    * performance
-   * Removes what php limits are possible to remove to allow a process to run as long as needed.
+   * Allow a process to run as long as possible.
    *
    * @credit https://wordpress.org/plugins/piklist/
    */

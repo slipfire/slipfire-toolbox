@@ -1,0 +1,1 @@
+body{background:#fff}p a:link:after{content:" (" attr(href)") ";font-size:90%}p a{word-wrap:break-word}a:link,a:visited{color:#520;background:0 0;font-weight:700;text-decoration:underline}img{height:auto;width:auto;max-width:100%}.no-print{display:none!important}

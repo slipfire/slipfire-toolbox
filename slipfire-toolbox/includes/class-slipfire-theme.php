@@ -9,12 +9,15 @@ $slipfire_theme = new SlipFire_Theme();
 
 class SlipFire_Theme
 {
+  /**
+   * Initialize the class
+   */
   public function __construct()
   {
     add_action('wp_headers', array('slipfire_theme', 'send_headers'));
     add_action('get_header', array('slipfire_theme', 'get_header'));
     add_action('wp_enqueue_scripts', array('slipfire_theme', 'scripts_styles_early'), 0);
-    add_action('wp_enqueue_scripts', array('slipfire_theme', 'scripts_styles_last'), 99999);
+    add_action('wp_enqueue_scripts', array('slipfire_theme', 'scripts_styles_last'), 9999);
 
     add_action('wp_head', array('slipfire_theme', 'browse_happy'), 99999);
     add_filter('body_class', array('slipfire_theme', 'body_class'));
@@ -44,7 +47,10 @@ class SlipFire_Theme
   public static function scripts_styles_early()
   {
     wp_register_style('normalize', slipfire_toolbox::base_dir_url() . 'parts/css/normalize.min.css');
+    wp_register_style('slipfire-toolbox', slipfire_toolbox::base_dir_url() . 'parts/css/slipfire-toolbox.min.css');
+
     wp_enqueue_style('normalize');
+    wp_enqueue_style('slipfire-toolbox');
   }
 
   /**
@@ -52,8 +58,8 @@ class SlipFire_Theme
    */
   public static function scripts_styles_last()
   {
-    wp_register_style('slipfire-toolbox', slipfire_toolbox::base_dir_url() . 'parts/css/slipfire-toolbox.min.css');
-    wp_enqueue_style('slipfire-toolbox');
+    wp_register_style('slipfire-print', slipfire_toolbox::base_dir_url() . 'parts/css/slipfire-print.min.css', array(), null,'print');
+    wp_enqueue_style('slipfire-print');
   }
 
   public static function browse_happy()
