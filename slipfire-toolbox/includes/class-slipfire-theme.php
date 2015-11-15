@@ -86,7 +86,8 @@ class SlipFire_Theme
   /**
    * Enhanced body classes
    *
-   * Inspired by https://github.com/justintadlock/hybrid-core
+   * Mostly inspired from Theme Hybrid 
+   * https://github.com/justintadlock/hybrid-core
    */
   public static function body_class($classes)
   {
@@ -199,13 +200,13 @@ class SlipFire_Theme
       $classes[] = 'post_type_' . get_post_type();
     }
 
-    // Paged views.
+    // Paged views
     if (is_paged())
     {
       $classes[] = 'paged';
       $classes[] = 'paged-' . intval(get_query_var('paged'));
     }
-    // Singular post paged views using <!-- nextpage -->.
+    // Singular post paged views using <!-- nextpage -->
     elseif (is_singular() && 1 < get_query_var('page'))
     {
       $classes[] = 'paged';
@@ -224,6 +225,20 @@ class SlipFire_Theme
 
       $classes[] = "user-level-" . $user_level;
     }
+
+    if(slipfire::is_mobile())
+    {
+      $classes[] = 'mobile';
+    }
+
+    if(slipfire::is_phone())
+    {
+      $classes[] = 'phone';
+    }
+
+
+
+    
 
     // Browsers
     if ($is_lynx)
