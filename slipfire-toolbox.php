@@ -16,13 +16,21 @@ if (!defined('ABSPATH'))
   exit;
 }
 
+// Load external libraries
 include_once('slipfire-toolbox/library/load-libraries.php');
+
+// Load main class
 include_once('slipfire-toolbox/includes/class-slipfire.php');
+
+// Load security class
 include_once('slipfire-toolbox/includes/class-slipfire-security.php');
+
+// Load theme class
 include_once('slipfire-toolbox/includes/class-slipfire-theme.php');
 
 if (is_admin())
 {
+	// Load admin class
   include_once('slipfire-toolbox/includes/class-slipfire-admin.php');
 }
 
