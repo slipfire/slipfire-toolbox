@@ -1,0 +1,3 @@
+[submodule "slipfire-toolbox/library/Mobile-Detect"]
+	path = slipfire-toolbox/library/Mobile-Detect
+	url = https://sbruner@github.com/serbanghita/Mobile-Detect.git
