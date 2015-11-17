@@ -1,16 +1,22 @@
 /**
  * Inspired by
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css
  * http://www.smashingmagazine.com/2011/11/how-to-set-up-a-print-style-sheet/
  * http://alistapart.com/article/goingtoprint
  */
 
 
-/**
- * Force background to white
- */
-body {
-	background: white;
+*,
+*:before,
+*:after,
+*:first-letter,
+*:first-line {
+    background: transparent !important;
+    color: #000 !important; /* Black prints faster: http://www.sanbeiji.com/archives/953 */
+    box-shadow: none !important;
+    text-shadow: none !important;
 }
+
 
 /**
  * Display hyperlink next to link text
@@ -20,6 +26,18 @@ p a:link:after {
 	content: " (" attr(href) ") "; 
 	font-size: 90%; 
 }
+
+	/**
+	 * Don't show links that are 
+	 **  in the header
+	 ** fragment identifiers
+	 ** use the `javascript:` pseudo protocol
+	 */
+	header a:link:after,
+	a[href^="#"]:after,
+	a[href^="javascript:"]:after {
+		content: "";
+	}
 
 /**
  * Break long urls
@@ -32,12 +50,37 @@ p a {
  * Highlight links
  */
 a:link, 
-a:visited { 
+a:visited,
+a:hover,
+a:focus,
+a:active {
 	color: #520; 
 	background: transparent; 
 	font-weight: bold; 
-	text-decoration: underline; 
+	border-bottom: 1px solid;
 }
+
+
+pre,
+blockquote {
+	border: 1px solid #999;
+	page-break-inside: avoid;
+}
+
+/*
+ * Printing Tables:
+ * http://css-discuss.incutio.com/wiki/Printing_Tables
+ */
+
+thead {
+	display: table-header-group;
+}
+
+tr,
+img {
+	page-break-inside: avoid;
+}
+
 
 /**
  * Make sure images don't overscale
@@ -46,6 +89,18 @@ img {
 	height: auto;
 	width: auto;
 	max-width: 100%;
+}
+
+p,
+h2,
+h3 {
+	orphans: 3;
+	widows: 3;
+}
+
+h2,
+h3 {
+	page-break-after: avoid;
 }
 
 /**

@@ -62,6 +62,9 @@ class SlipFire_Theme
     wp_enqueue_style('slipfire-print');
   }
 
+  /**
+   * Let users know they are using an outdated browser if LT IE8
+   */
   public static function browse_happy()
   {
     ?>

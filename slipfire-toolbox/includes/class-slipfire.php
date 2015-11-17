@@ -17,7 +17,6 @@ class SlipFire
     add_action('init', array('slipfire', 'create_cron_schedules'));
   }
 
-
   /**
    * Output as preformatted text
    * @credit https://wordpress.org/plugins/piklist/
@@ -60,62 +59,6 @@ class SlipFire
     }
   }
 
-
-  /**
-   * Is Mobile
-   * 
-   * Checks if current browser is a phone or tablet
-   *
-   * Uses Mobile_Detect
-   */
-  public static function is_mobile()
-  {
-    global $detect;
-
-    if(($detect->isMobile() == true))
-    {
-      return true;
-    }
-  }
-
-  /**
-   * Is Phone
-   *
-   * Checks if current browser is a phone
-   *
-   * Uses Mobile_Detect
-   */
-  public static function is_phone()
-  {
-    global $detect;
-
-    if(($detect->isMobile() == true) && ($detect->isTablet() == false))
-    {
-      return true;
-    }
-
-    return false;
-  }
-
-  /**
-   * Is Tablet
-   *
-   * Checks if current browser is a tablet
-   *
-   * Uses Mobile_Detect
-   */
-  public static function is_tablet()
-  {
-    global $detect;
-
-    if($detect->isTablet() == true)
-    {
-      return true;
-    }
-
-    return false;
-  }
-
   /**
    * Returns page slug.
    */
@@ -144,14 +87,6 @@ class SlipFire
   }
 
   /**
-   * Echos page slug
-   */
-  public static function the_slug($id = null)
-  {
-    echo slipfire::get_the_slug($id);
-  }
-
-  /**
    * Get the current, full URL.
    *
    * @return string
@@ -161,6 +96,50 @@ class SlipFire
     return (is_ssl() ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
   }
 
+  /**
+   * Returns a list of taxonomies
+   *
+   * param $remove: taxonomies to remove from list
+   */
+  public static function get_taxonomies($remove = false, $args)
+  {
+    $taxonomies = get_taxonomies($args);
+
+    if($remove)
+    {
+      foreach ($remove as $taxonomy)
+      {
+        unset($taxonomies[$taxonomy]);
+      }
+    }
+
+    return $taxonomies;
+  }
+
+
+  /**
+   * Returns a list of Post Types
+   *
+   * param $remove: taxonomies to remove from list
+   */
+  public static function get_post_types($remove = false, $args = array('public' => true, '_builtin' => false))
+  {
+    $post_types = get_post_types(
+        $args
+        , 'names'
+        , 'and'
+      );
+
+    if($remove)
+    {
+      foreach ($remove as $post_type)
+      {
+        unset($post_types[$post_type]);
+      }
+    }
+
+    return $post_types;
+  }
 
   /**
    * Enable Maintenance Mode
@@ -220,50 +199,59 @@ class SlipFire
      <?php 
   }
 
-
   /**
-   * Returns a list of taxonomies
+   * Is Mobile
+   * 
+   * Checks if current browser is mobile
    *
-   * param $remove: taxonomies to remove from list
+   * Uses Mobile_Detect
    */
-  public static function get_taxonomies($remove = false, $args)
+  public static function is_mobile()
   {
-    $taxonomies = get_taxonomies($args);
+    global $detect;
 
-    if($remove)
+    if(($detect->isMobile() == true))
     {
-      foreach ($remove as $taxonomy)
-      {
-        unset($taxonomies[$taxonomy]);
-      }
+      return true;
     }
-
-    return $taxonomies;
   }
 
-
   /**
-   * Returns a list of Post Types
+   * Is Phone
    *
-   * param $remove: taxonomies to remove from list
+   * Checks if current browser is a phone
+   *
+   * Uses Mobile_Detect
    */
-  public static function get_post_types($remove = false, $args = array('public' => true, '_builtin' => false))
+  public static function is_phone()
   {
-    $post_types = get_post_types(
-        $args
-        , 'names'
-        , 'and'
-      );
+    global $detect;
 
-    if($remove)
+    if(($detect->isMobile() == true) && ($detect->isTablet() == false))
     {
-      foreach ($remove as $post_type)
-      {
-        unset($post_types[$post_type]);
-      }
+      return true;
     }
 
-    return $post_types;
+    return false;
+  }
+
+  /**
+   * Is Tablet
+   *
+   * Checks if current browser is a tablet
+   *
+   * Uses Mobile_Detect
+   */
+  public static function is_tablet()
+  {
+    global $detect;
+
+    if($detect->isTablet() == true)
+    {
+      return true;
+    }
+
+    return false;
   }
 
   /**
