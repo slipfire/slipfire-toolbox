@@ -155,6 +155,7 @@
   border: 0;
 }
 
+a.no-link,
 a.no-link:hover,
 a.no-link:focus {
   text-decoration: none;
