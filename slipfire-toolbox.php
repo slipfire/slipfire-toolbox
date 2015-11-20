@@ -1,4 +1,4 @@
- <?php
+<?php
 /*
 Plugin Name: SlipFire Toolbox
 Plugin URI: http://slipfire.com
