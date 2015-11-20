@@ -174,16 +174,19 @@ class SlipFire_Theme
     // Page title
     if(is_page())
     {
-      $title = $post->post_name;
+      $title = sanitize_title(get_the_title($post->ID));
       $classes[] = 'page_title_' . $title;
+
+      $slug = $post->post_name;
+      $classes[] = 'page_slug_' . $slug;
     }
 
     // Parent page title
     if (is_page() && $post->post_parent)
     {
       $post_parent = get_post($post->post_parent);
-      $title = $post_parent->post_name;
-      $classes[] = 'parent_' . $title;
+      $slug = $post_parent->post_name;
+      $classes[] = 'parent_' . $slug;
     }
 
     // Page template
