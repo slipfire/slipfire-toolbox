@@ -236,16 +236,6 @@ class SlipFire_Theme
       $classes[] = 'mobile';
     }
 
-    if(slipfire::is_phone())
-    {
-      $classes[] = 'phone';
-    }
-
-    if(slipfire::is_tablet())
-    {
-      $classes[] = 'tablet';
-    }
-
     // Browsers
     if ($is_lynx)
     {

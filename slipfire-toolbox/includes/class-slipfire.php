@@ -208,9 +208,12 @@ class SlipFire
    */
   public static function is_mobile()
   {
-    global $detect;
+    // global $detect;
 
-    if(($detect->isMobile() == true))
+    // if(($detect->isMobile() == true))
+    // {
+    // 
+    if(wp_is_mobile())
     {
       return true;
     }
@@ -225,14 +228,8 @@ class SlipFire
    */
   public static function is_phone()
   {
-    global $detect;
-
-    if(($detect->isMobile() == true) && ($detect->isTablet() == false))
-    {
-      return true;
-    }
-
-    return false;
+    // Backwards compatibility
+    slipfire::is_mobile();
   }
 
   /**
@@ -244,14 +241,8 @@ class SlipFire
    */
   public static function is_tablet()
   {
-    global $detect;
-
-    if($detect->isTablet() == true)
-    {
-      return true;
-    }
-
-    return false;
+    // Backwards compatibility
+    slipfire::is_mobile();
   }
 
   /**
