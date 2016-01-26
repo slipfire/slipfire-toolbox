@@ -3,14 +3,14 @@
 Plugin Name: SlipFire Toolbox
 Plugin URI: http://slipfire.com
 Description: SlipFire functions and CSS. Install in mu-plugins
-Version: 4.9.9
+Version: 4.9.10
 Author: SlipFire
 Author URI: http://slipfire.com/
 Plugin Type: Piklist
 License: GPLv2
 */
 
-/*  
+/*
   This software is distributed under the GNU General Public License, Version 2,
   June 1991. Copyright (C) 1989, 1991 Free Software Foundation, Inc., 51 Franklin
   St, Fifth Floor, Boston, MA 02110, USA

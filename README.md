@@ -17,6 +17,9 @@ Install in your /mu-plugins/ folders
 
 ## Changelog
 
+### 4.9.10
+* Add logged in user name to admin_body_class
+
 ### 4.9.9
 * Remove Mobile Detect
 
