@@ -1,7 +1,23 @@
-/**
- * Base CSS rules
- */
+/*
 
+SlipFire Toolbox
+
+*/
+
+/**
+  * Help Make embeds responsive
+  */
+ embed,
+ iframe,
+ object,
+ video {
+   max-width: 100%;
+ }
+
+
+ /**
+  * CSS Helpers
+	*/
 .clear {
   clear: both;
 }
@@ -25,6 +41,10 @@
   margin-right: auto !important;
   text-align: center !important;
 }
+
+/**
+ * Style
+ */
 
 .bold {
   font-weight: bold;
@@ -259,7 +279,7 @@ a.no-link:focus {
   white-space: nowrap;
 }
 
-/* get rid of the bullets and padding from a ul element */
+/* get rid of bullets and padding from a ul element */
 .list-bare {
   padding: 0;
   list-style: none;

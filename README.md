@@ -17,6 +17,9 @@ Install in your /mu-plugins/ folders
 
 ## Changelog
 
+### 4.9.11
+* Set max-width to embeds, iframes, objects and video to help with responsiveness.
+
 ### 4.9.10
 * Add logged in user name to admin_body_class
 

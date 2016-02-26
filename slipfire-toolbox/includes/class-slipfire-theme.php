@@ -32,7 +32,7 @@ class SlipFire_Theme
 
     $headers['X-Frame-Options'] = 'SAMEORIGIN'; // http://engineeredweb.com/blog/2013/secure-site-clickjacking-x-frame-options/
     $headers['X-XSS-Protection'] = '1; mode=block';  // https://kb.sucuri.net/warnings/hardening/headers-x-xss-protection
-    
+
     return $headers;
   }
 
@@ -46,8 +46,8 @@ class SlipFire_Theme
    */
   public static function scripts_styles_early()
   {
-    wp_register_style('normalize', slipfire_toolbox::base_dir_url() . 'parts/css/normalize.min.css');
-    wp_register_style('slipfire-toolbox', slipfire_toolbox::base_dir_url() . 'parts/css/slipfire-toolbox.min.css');
+    wp_register_style('normalize', slipfire_toolbox::base_dir_url() . 'parts/css/normalize.min.css', array(), SLIPFIRE_TOOLBOX_ASSETS_VERSION);
+    wp_register_style('slipfire-toolbox', slipfire_toolbox::base_dir_url() . 'parts/css/slipfire-toolbox.min.css', array(), SLIPFIRE_TOOLBOX_ASSETS_VERSION);
 
     wp_enqueue_style('normalize');
     wp_enqueue_style('slipfire-toolbox');
@@ -58,7 +58,7 @@ class SlipFire_Theme
    */
   public static function scripts_styles_last()
   {
-    wp_register_style('slipfire-print', slipfire_toolbox::base_dir_url() . 'parts/css/slipfire-print.min.css', array(), null,'print');
+    wp_register_style('slipfire-print', slipfire_toolbox::base_dir_url() . 'parts/css/slipfire-print.min.css', array(), SLIPFIRE_TOOLBOX_ASSETS_VERSION, 'print');
     wp_enqueue_style('slipfire-print');
   }
 
@@ -88,7 +88,7 @@ class SlipFire_Theme
   /**
    * Enhanced body classes
    *
-   * Mostly inspired from Theme Hybrid 
+   * Mostly inspired from Theme Hybrid
    * https://github.com/justintadlock/hybrid-core
    */
   public static function body_class($classes)
@@ -109,7 +109,7 @@ class SlipFire_Theme
     {
       $classes[] = 'multisite';
       $classes[] = 'site-' . get_current_blog_id();
-      
+
       $sitename = str_replace(' ', '-' , strtolower(get_bloginfo('name')));
       $classes[] = 'site-' . $sitename;
     }
@@ -279,14 +279,14 @@ class SlipFire_Theme
       $classes[] = 'iphone';
     }
 
-    return $classes; 
+    return $classes;
   }
 
   /**
    * Check if site was placed in maintenance mode
    */
   public static function check_maintenance_mode()
-  {    
+  {
     $maintenance_mode = get_option('sfire_maintenance_mode');
     $maintenance_mode_network = get_site_option('sfire_maintenance_mode');
 
