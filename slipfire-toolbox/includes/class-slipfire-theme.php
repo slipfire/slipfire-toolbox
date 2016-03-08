@@ -16,6 +16,9 @@ class SlipFire_Theme
   {
     add_action('wp_headers', array('slipfire_theme', 'send_headers'));
     add_action('get_header', array('slipfire_theme', 'get_header'));
+		add_action('wp_footer', array('slipfire_theme', 'wp_footer'));
+
+
     add_action('wp_enqueue_scripts', array('slipfire_theme', 'scripts_styles_early'), 0);
     add_action('wp_enqueue_scripts', array('slipfire_theme', 'scripts_styles_last'), 9999);
 
@@ -26,7 +29,7 @@ class SlipFire_Theme
   /**
    * Update Headers for better security
    */
-  public static function send_headers()
+  public static function send_headers($headers)
   {
     send_nosniff_header();
 
@@ -61,6 +64,28 @@ class SlipFire_Theme
     wp_register_style('slipfire-print', slipfire_toolbox::base_dir_url() . 'parts/css/slipfire-print.min.css', array(), SLIPFIRE_TOOLBOX_ASSETS_VERSION, 'print');
     wp_enqueue_style('slipfire-print');
   }
+
+	public static function wp_footer()
+	{
+		self::get_useragent();
+	}
+
+	/*
+	 * Add useragent to HMTL wrapper
+	 * Allows targeting via css
+	 * Example: 	html[data-useragent*='Windows'] .content {color: #fff;}
+	 *
+	 * Credit: http://rog.ie/blog/html5-boilerplate-addon
+	 */
+	public static function get_useragent()
+	{
+		?>
+			<script type="text/javascript">
+				var doc = document.documentElement;
+				doc.setAttribute('data-useragent', navigator.userAgent);
+			</script>
+		<?php
+	}
 
   /**
    * Let users know they are using an outdated browser if LT IE8

@@ -17,6 +17,10 @@ Install in your /mu-plugins/ folders
 
 ## Changelog
 
+### 4.9.12
+* Don't overwrite existing headers
+* Add user agent targeting
+
 ### 4.9.11
 * Set max-width to embeds, iframes, objects and video to help with responsiveness.
 
