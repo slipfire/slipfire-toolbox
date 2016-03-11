@@ -17,6 +17,9 @@ Install in your /mu-plugins/ folders
 
 ## Changelog
 
+### 4.9.13
+* Remove floats when centering
+
 ### 4.9.12
 * Don't overwrite existing headers
 * Add user agent targeting

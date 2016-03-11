@@ -40,6 +40,7 @@ SlipFire Toolbox
   margin-left: auto !important;
   margin-right: auto !important;
   text-align: center !important;
+	float: none !important;
 }
 
 /**
