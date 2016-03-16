@@ -4,9 +4,7 @@ Contributors: sbruner
 
 Requires at least: 4.0  
 
-Tested up to: 4.4
-
-Stable tag: 4.9.3
+Tested up to: 4.5
 
 ## Description
 
@@ -16,6 +14,9 @@ Install in your /mu-plugins/ folders
 
 
 ## Changelog
+
+### 4.9.14
+* Include flexibility library: https://github.com/10up/flexibility/blob/master/dist/flexibility.js
 
 ### 4.9.13
 * Remove floats when centering

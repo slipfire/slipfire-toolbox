@@ -52,8 +52,12 @@ class SlipFire_Theme
     wp_register_style('normalize', slipfire_toolbox::base_dir_url() . 'parts/css/normalize.min.css', array(), SLIPFIRE_TOOLBOX_ASSETS_VERSION);
     wp_register_style('slipfire-toolbox', slipfire_toolbox::base_dir_url() . 'parts/css/slipfire-toolbox.min.css', array(), SLIPFIRE_TOOLBOX_ASSETS_VERSION);
 
+		wp_register_script('flexibility', slipfire_toolbox::base_dir_url() . 'library/flexibility/flexibility.js', array(), '1.0.6', true);
+
     wp_enqueue_style('normalize');
     wp_enqueue_style('slipfire-toolbox');
+
+		wp_enqueue_script('flexibility');
   }
 
   /**
