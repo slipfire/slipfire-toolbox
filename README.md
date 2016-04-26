@@ -15,6 +15,9 @@ Install in your /mu-plugins/ folders
 
 ## Changelog
 
+### 4.9.15
+* Replace get_currentuserinfo with wp_get_current_user
+
 ### 4.9.14
 * Include flexibility library: https://github.com/10up/flexibility/blob/master/dist/flexibility.js
 

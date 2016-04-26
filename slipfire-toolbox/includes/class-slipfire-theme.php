@@ -250,9 +250,7 @@ class SlipFire_Theme
     //'user-level' if logged in
     if (is_user_logged_in())
     {
-      global $current_user;
-
-      get_currentuserinfo();
+      $current_user = wp_get_current_user();
       $userid = $current_user->ID;
       $user_info = get_userdata($userid);
       $user_level = $user_info->user_level;
