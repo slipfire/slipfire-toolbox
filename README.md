@@ -15,6 +15,9 @@ Install in your /mu-plugins/ folders
 
 ## Changelog
 
+### 4.9.16
+* Hide WordPress login errors for better security
+
 ### 4.9.15
 * Replace get_currentuserinfo with wp_get_current_user
 

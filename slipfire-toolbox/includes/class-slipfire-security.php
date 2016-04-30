@@ -15,6 +15,8 @@ class SlipFire_Security
   public function __construct()
   {
   	add_action('slipfire_hourly_cron_job', array('slipfire_security', 'test_debug_log'));
+
+		add_action('login_errors', array('slipfire_security', 'hide_wordpress_errors'));
 	}
 
 	/**
@@ -34,4 +36,10 @@ class SlipFire_Security
 			mail($to, $subject, $message);
 		}
 	}
+
+	public static function hide_wordpress_errors($error)
+	{
+  	return __('Login error');
+	}
+
 }
