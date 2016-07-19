@@ -4,7 +4,7 @@
 Plugin Name: SlipFire Toolbox
 Plugin URI: http://slipfire.com
 Description: SlipFire functions and CSS. Install in mu-plugins
-Version: 4.9.16
+Version: 4.9.17
 Author: SlipFire
 Author URI: http://slipfire.com/
 Plugin Type: Piklist

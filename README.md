@@ -15,6 +15,9 @@ Install in your /mu-plugins/ folders
 
 ## Changelog
 
+### 4.9.17
+* New CSS classes: hypenate, force-break
+
 ### 4.9.16
 * Hide WordPress login errors for better security
 
