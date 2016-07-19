@@ -41,7 +41,7 @@ if (!defined('ABSPATH'))
 }
 
 
-define('SLIPFIRE_TOOLBOX_ASSETS_VERSION', '4.9.11');
+define('SLIPFIRE_TOOLBOX_ASSETS_VERSION', '4.9.17');
 
 // Load main class
 include_once('slipfire-toolbox/includes/class-slipfire.php');
