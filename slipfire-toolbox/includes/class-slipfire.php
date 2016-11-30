@@ -27,15 +27,15 @@ class SlipFire
     {
       $output = '--------------------------------------------------';
     }
-    
+
     echo "<pre " . ($hide ? 'style="display: none !important;"' : null) . ">\r\n";
-  
+
     print_r($output);
-  
+
     echo "</pre>\r\n";
 
     $output = ob_get_contents();
- 
+
     if (!empty($output))
     {
       @ob_flush();
@@ -53,7 +53,7 @@ class SlipFire
   public static function performance()
   {
     if (!ini_get('safe_mode'))
-    { 
+    {
       ini_set('max_execution_time', -1);
       ini_set('memory_limit', -1);
     }
@@ -196,12 +196,12 @@ class SlipFire
       </p>
     </div>
 
-     <?php 
+     <?php
   }
 
   /**
    * Is Mobile
-   * 
+   *
    * Checks if current browser is mobile
    *
    * Uses Mobile_Detect
@@ -212,7 +212,7 @@ class SlipFire
 
     // if(($detect->isMobile() == true))
     // {
-    // 
+    //
     if(wp_is_mobile())
     {
       return true;
@@ -247,7 +247,7 @@ class SlipFire
 
   /**
    * Setup cron schedule
-   * 
+   *
    * To use: add_action('slipfire_hourly_cron_job', 'function_to_run_hourly')
    */
   public static function create_cron_schedules()
@@ -260,6 +260,29 @@ class SlipFire
   }
 
 
+  /**
+  * array_insert_key_position
+  *
+  * Insert data after a specific key in an array
+  *
+  * @param $array Original array
+  * @param $key The key to add after/before
+  * @param $insert Data to insert
+  * @param $where after or before
+  */
+  public static function array_insert_key_position($array, $key, $insert, $where = 'after')
+  {
+    $offset = $where == 'after' ? 1 : 0;
+
+    $keys = array_keys($array);
+    $pos = (int) array_search($key, $keys);
+    return array_merge(
+      array_slice($array, $offset, $pos),
+      $insert,
+      array_slice($array, $pos)
+    );
+  }
+
+
 
 }
-

@@ -15,6 +15,9 @@ Install in your /mu-plugins/ folders
 
 ## Changelog
 
+### 4.9.18
+* New Helper: array_insert_key_position
+
 ### 4.9.17
 * New CSS classes: hypenate, force-break
 
