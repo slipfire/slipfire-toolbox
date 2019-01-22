@@ -46,9 +46,6 @@ define('SLIPFIRE_TOOLBOX_ASSETS_VERSION', '4.9.18');
 // Load main class
 include_once('slipfire-toolbox/includes/class-slipfire.php');
 
-// Load security class
-include_once('slipfire-toolbox/includes/class-slipfire-security.php');
-
 // Load theme class
 include_once('slipfire-toolbox/includes/class-slipfire-theme.php');
 
