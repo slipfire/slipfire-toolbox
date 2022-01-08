@@ -1,0 +1,23 @@
+
+{
+	"description": "Lint and format code for a WordPress website.",
+	"type": "project",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+	  {
+		"name": "SlipFire",
+		"email": "team@slipfire.com"
+	  }
+	],
+	"config": {
+	  "platform": {
+		"php": "7.4"
+	  }
+	},
+	"require-dev": {
+	  "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+	  "phpcompatibility/phpcompatibility-wp": "^2.1.1",
+	  "wp-cli/wp-cli-bundle": "^2.5.0",
+	  "wp-coding-standards/wpcs": "^2.3.0"
+	}
+  }
