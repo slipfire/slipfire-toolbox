@@ -35,30 +35,27 @@ License: GPLv2
 */
 
 
-if (!defined('ABSPATH'))
-{
-  exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
 
-define('SLIPFIRE_TOOLBOX_ASSETS_VERSION', '4.9.18');
+define( 'SLIPFIRE_TOOLBOX_ASSETS_VERSION', '4.9.18' );
 
 // Load main class
-include_once('slipfire-toolbox/includes/class-slipfire.php');
+require_once 'slipfire-toolbox/includes/class-slipfire.php';
 
 // Load theme class
-include_once('slipfire-toolbox/includes/class-slipfire-theme.php');
+require_once 'slipfire-toolbox/includes/class-slipfire-theme.php';
 
-if (is_admin())
-{
+if ( is_admin() ) {
 	// Load admin class
-  include_once('slipfire-toolbox/includes/class-slipfire-admin.php');
+	include_once 'slipfire-toolbox/includes/class-slipfire-admin.php';
 }
 
-class SlipFire_Toolbox
-{
-  public static function base_dir_url()
-	{
-		return plugins_url('slipfire-toolbox/', __FILE__);
+class SlipFire_Toolbox {
+
+	public static function base_dir_url() {
+		 return plugins_url( 'slipfire-toolbox/', __FILE__ );
 	}
 }
